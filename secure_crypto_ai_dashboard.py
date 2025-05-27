@@ -15,8 +15,8 @@ st.title("📊 Secure Crypto AI Trading Bot Dashboard")
 
 # Load secrets from Streamlit Cloud
 try:
-    API_KEY = st.secrets["BINANCE_API_KEY"]
-    API_SECRET = st.secrets["BINANCE_API_SECRET"]
+    API_KEY = st.secrets["kpMVhryBMuY5OKGduKjnVupMxefiH5EGa0LdrZE9ua6C65MvqvWiipGfwN7MxAcD"]
+    API_SECRET = st.secrets["ALfdQSMxQLYgPvSqxuExRVTdxpKozzCjrgUvNKAKtvLXLasAC2Zy0z0WaCUPKDZE"]
 except Exception as e:
     st.error("🔒 API credentials are missing. Please set them in Streamlit Cloud > Settings > Secrets.")
     st.stop()
