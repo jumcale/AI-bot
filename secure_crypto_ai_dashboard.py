@@ -1,4 +1,3 @@
-
 # Secure Streamlit Dashboard for Crypto AI Bot
 # Use streamlit secrets to protect your API keys
 
@@ -15,10 +14,20 @@ st.title("📊 Secure Crypto AI Trading Bot Dashboard")
 
 # Load secrets from Streamlit Cloud
 try:
-    API_KEY = st.secrets["kpMVhryBMuY5OKGduKjnVupMxefiH5EGa0LdrZE9ua6C65MvqvWiipGfwN7MxAcD"]
-    API_SECRET = st.secrets["ALfdQSMxQLYgPvSqxuExRVTdxpKozzCjrgUvNKAKtvLXLasAC2Zy0z0WaCUPKDZE"]
+    API_KEY = st.secrets["BINANCE_API_KEY"]
+    API_SECRET = st.secrets["BINANCE_API_SECRET"]
 except Exception as e:
     st.error("🔒 API credentials are missing. Please set them in Streamlit Cloud > Settings > Secrets.")
+    st.stop()
+
+# Initialize Binance Client for Testnet
+try:
+    client = Client(API_KEY, API_SECRET)
+    client.API_URL = 'https://testnet.binance.vision/api'
+    client.ping()
+    st.success("✅ Connected to Binance Testnet API")
+except Exception as e:
+    st.error(f"❌ Binance API connection failed: {e}")
     st.stop()
 
 # Initialize Binance Client for Testnet
